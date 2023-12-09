@@ -15,6 +15,10 @@ export const Container = styled.div`
     margin: 0 auto;
     display: flex;
     justify-content: space-around;
+
+    img {
+      margin-top: 28px;
+    }
   }
 `
 export const TextContainer = styled.div`
@@ -26,5 +30,5 @@ export const TextContainer = styled.div`
 export const Text = styled.p`
   color: ${cores.rosa};
   font-size: 10px;
-  margin-top: 80px;
+  margin-top: 76px;
 `

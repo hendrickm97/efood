@@ -23,5 +23,5 @@ export const Title = styled.h2`
   color: ${cores.rosa};
   font-size: 36px;
   font-weight: bold;
-  margin-top: 120px;
+  margin-top: 134px;
 `

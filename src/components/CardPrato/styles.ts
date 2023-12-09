@@ -6,7 +6,7 @@ export const Card = styled.div`
   max-width: 100%;
   background-color: ${cores.rosa};
   position: relative;
-  margin: 32px auto;
+  margin-bottom: 32px;
 
   img {
     padding: 8px;
@@ -39,5 +39,6 @@ export const Botao = styled.button`
   height: 24px;
   border: none;
   font-size: 14px;
+  font-weight: 700;
   cursor: pointer;
 `

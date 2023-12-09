@@ -23,15 +23,38 @@ export const Container = styled.div`
   align-items: center;
   width: 1024px;
   max-width: 100%;
+
+  h3 {
+    font-size: 18px;
+  }
 `
 export const Imagem = styled.div`
+  position: relative;
   width: 100%;
   height: 280px;
   display: block;
+  background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  margin-bottom: 24px;
+  margin-bottom: 56px;
+
+  &::after {
+    position: absolute;
+    background-color: #000;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    content: '';
+    opacity: 0.5;
+  }
+
+  .container {
+    z-index: 1;
+    position: relative;
+  }
 `
+
 export const Titulo = styled.h2`
   font-size: 32px;
   font-weight: bold;
