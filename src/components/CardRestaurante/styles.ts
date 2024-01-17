@@ -10,6 +10,12 @@ export const Card = styled.div`
   position: relative;
   margin-bottom: 48px;
 
+  > img {
+    width: 472px;
+    height: 217px;
+    object-fit: cover;
+  }
+
   ${TagContainer} {
     margin-right: 8px;
   }

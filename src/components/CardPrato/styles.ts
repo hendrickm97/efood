@@ -10,6 +10,8 @@ export const Card = styled.div`
 
   img {
     padding: 8px;
+    width: 100%;
+    height: 167px;
   }
 `
 

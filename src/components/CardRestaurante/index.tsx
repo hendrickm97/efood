@@ -15,8 +15,10 @@ type Props = {
   title: string
   stars: number
   description: string
-  infos: string[]
+  infos: string
   image: string
+  id: number
+  destacado: boolean
 }
 
 const CardRestaurante = ({
@@ -24,14 +26,15 @@ const CardRestaurante = ({
   stars,
   description,
   infos,
-  image
+  image,
+  id,
+  destacado
 }: Props) => (
   <Card>
     <img src={image} />
     <Infos>
-      {infos.map((info) => (
-        <Tag key={info}>{info}</Tag>
-      ))}
+      {destacado === true ? <Tag>Destaque da semana</Tag> : ''}
+      <Tag key={infos}>{infos}</Tag>
     </Infos>
     <CardInfos>
       <Titulo>{title}</Titulo>
@@ -41,7 +44,7 @@ const CardRestaurante = ({
       </Nota>
     </CardInfos>
     <Descricao>{description}</Descricao>
-    <Link to={'/restaurantes'}>
+    <Link to={`/restaurantes/${id}`}>
       <Botao>Saiba mais</Botao>
     </Link>
   </Card>

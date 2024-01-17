@@ -1,8 +1,13 @@
 import { HeaderBar, Imagem, Container, Categoria, Titulo } from './styles'
 import logo from '../../assets/images/logo.svg'
-import banner from '../../assets/images/banner.png'
 
-const HeaderRestaurante = () => (
+type Props = {
+  url: string
+  tipo: string
+  titulo: string
+}
+
+const HeaderRestaurante = ({ url, tipo, titulo }: Props) => (
   <>
     <HeaderBar>
       <Container>
@@ -13,13 +18,13 @@ const HeaderRestaurante = () => (
     </HeaderBar>
     <Imagem
       style={{
-        backgroundImage: `url(${banner})`
+        backgroundImage: `url(${url})`
       }}
     >
       <div className="container">
-        <Categoria>Italiana</Categoria>
+        <Categoria>{tipo}</Categoria>
         <div>
-          <Titulo>La Dolce Vita Trattoria</Titulo>
+          <Titulo>{titulo}</Titulo>
         </div>
       </div>
     </Imagem>
