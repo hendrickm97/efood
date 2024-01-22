@@ -4,13 +4,15 @@ import CardPrato, { getDescription } from '../CardPrato'
 import { List, Modal, ModalContent } from './styles'
 import close from '../../assets/images/close.png'
 import { useParams } from 'react-router-dom'
+import { add, open } from '../../store/reducers/cart'
+import { useDispatch } from 'react-redux'
 
 interface ModalState {
   isVisible: boolean
   pratoSelecionado?: Restaurante
 }
 
-const formataPreco = (preco = 0) => {
+export const formataPreco = (preco = 0) => {
   return new Intl.NumberFormat('pt-BR', {
     style: 'currency',
     currency: 'BRL'
@@ -19,12 +21,20 @@ const formataPreco = (preco = 0) => {
 
 const ListaPratos = () => {
   const { id } = useParams()
+
   const [currentRest, setCurrentRest] = useState<Restaurante>()
   const [modal, setModal] = useState<ModalState>({
     isVisible: false
   })
 
   const [pratoSelecionado, setPratoSelecionado] = useState<CardapioItem>()
+
+  const dispatch = useDispatch()
+
+  const addToCart = () => {
+    dispatch(add(pratoSelecionado!))
+    dispatch(open())
+  }
 
   const openModal = (prato: CardapioItem) => {
     setPratoSelecionado(prato)
@@ -79,7 +89,7 @@ const ListaPratos = () => {
             <h3>{pratoSelecionado?.nome}</h3>
             <p>{pratoSelecionado?.descricao}</p>
             <p>{pratoSelecionado?.porcao}</p>
-            <button>
+            <button onClick={addToCart}>
               Adicionar ao carrinho - {formataPreco(pratoSelecionado?.preco)}
             </button>
           </div>

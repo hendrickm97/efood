@@ -20,7 +20,7 @@ const CardPrato = ({ title, description, image }: Props) => (
     <img src={image} />
     <Titulo>{title}</Titulo>
     <Descricao>{description}</Descricao>
-    <Botao>Adicionar ao carrinho</Botao>
+    <Botao>Mais detalhes</Botao>
   </Card>
 )
 
