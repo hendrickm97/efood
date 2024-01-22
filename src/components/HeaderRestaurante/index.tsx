@@ -2,6 +2,8 @@ import { HeaderBar, Imagem, Container, Categoria, Titulo } from './styles'
 import logo from '../../assets/images/logo.svg'
 import { useSelector } from 'react-redux'
 import { RootReducer } from '../../store'
+import { open } from '../../store/reducers/cart'
+import { useDispatch } from 'react-redux'
 
 type Props = {
   url: string
@@ -11,6 +13,11 @@ type Props = {
 
 const HeaderRestaurante = ({ url, tipo, titulo }: Props) => {
   const { pratos } = useSelector((state: RootReducer) => state.cart)
+  const dispatch = useDispatch()
+
+  const openCart = () => {
+    dispatch(open())
+  }
 
   return (
     <>
@@ -18,7 +25,7 @@ const HeaderRestaurante = ({ url, tipo, titulo }: Props) => {
         <Container>
           <h3>Restaurantes</h3>
           <img src={logo} alt="logo" />
-          <a>{pratos.length} - produto(s) no carrinho</a>
+          <a onClick={openCart}>{pratos.length} - produto(s) no carrinho</a>
         </Container>
       </HeaderBar>
       <Imagem
