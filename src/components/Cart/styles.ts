@@ -2,6 +2,10 @@ import styled from 'styled-components'
 import { cores } from '../../styles'
 import lixeira from '../../assets/images/lixeira.png'
 
+type InputDivProps = {
+  maxWidth?: string
+}
+
 export const CartContainer = styled.div`
   position: fixed;
   top: 0;
@@ -16,6 +20,10 @@ export const CartContainer = styled.div`
     display: flex;
   }
 `
+export const InputDiv = styled.div<InputDivProps>`
+  max-width: ${(props) => props.maxWidth || 'auto'};
+`
+
 export const Overlay = styled.div`
   position: absolute;
   top: 0;
@@ -31,7 +39,54 @@ export const Sidebar = styled.aside`
   padding: 32px 8px 0 8px;
   max-width: 344px;
   width: 100%;
+
+  &.is-closed {
+    display: none;
+  }
+
+  h3 {
+    font-size: 16px;
+    weight: 700;
+    color: ${cores.rosaClaro};
+  }
+
+  p {
+    color: ${cores.rosaClaro};
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 22px;
+    margin-top: 16px;
+  }
+
+  label {
+    font-size: 14px;
+    margin-bottom: 8px;
+    display: block;
+    color: ${cores.rosaClaro};
+    margin-top: 8px;
+  }
+
+  input {
+    width: 100%;
+    border: 1px solid ${cores.rosaClaro};
+    height: 32px;
+    background-color: ${cores.rosaClaro};
+    padding: 0 8px;
+
+    &.error {
+      border: 1px solid red;
+    }
+  }
 `
+export const ButtonGroup = styled.div`
+  margin-top: 24px;
+`
+export const InputGroup = styled.div`
+  display: flex;
+  column-gap: 30px;
+  justify-content: space-between;
+`
+
 export const CartItem = styled.li`
   display: flex;
   padding: 8px 0 12px 8px;
@@ -72,7 +127,7 @@ export const CartItem = styled.li`
     right: 8px;
   }
 `
-export const CartButtom = styled.div`
+export const CartButtom = styled.button`
   max-width: 100%;
   width: 344px;
   height: 24px;
@@ -82,7 +137,9 @@ export const CartButtom = styled.div`
   text-align: center;
   color: ${cores.rosa};
   padding: 4px 0;
-  margin-top: 16px;
+  margin-top: 8px;
+  cursor: pointer;
+  border: none;
 `
 export const Prices = styled.div`
   color: ${cores.rosaClaro};
@@ -91,4 +148,5 @@ export const Prices = styled.div`
   margin-top: 40px;
   display: flex;
   justify-content: space-between;
+  margin-bottom: 16px;
 `

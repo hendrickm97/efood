@@ -4,7 +4,7 @@ import { cores } from '../../styles'
 export const List = styled.ul`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  column-gap: 32px;
+  gap: 32px;
   margin-bottom: 88px;
 `
 export const Modal = styled.div`

@@ -9,7 +9,7 @@ type Props = {
 
 export const getDescription = (descricao: string) => {
   if (descricao.length > 120) {
-    return descricao.slice(0, 127) + '...'
+    return descricao.slice(0, 120) + '...'
   }
 
   return descricao

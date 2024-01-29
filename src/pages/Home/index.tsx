@@ -1,5 +1,6 @@
 import Header from '../../components/Header'
 import ListaRestaurantes from '../../components/ListaRestaurantes'
+import Loader from '../../components/Loader'
 
 import { useGetRestaurantesQuery } from '../../services/api'
 
@@ -34,7 +35,7 @@ const Home = () => {
       </>
     )
   }
-  return <h3>CARREGANDO...</h3>
+  return <Loader />
 }
 
 export default Home

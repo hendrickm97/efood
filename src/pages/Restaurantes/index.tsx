@@ -5,10 +5,15 @@ import ListaPratos from '../../components/ListaPratos'
 import { useGetRestaurateByIdQuery } from '../../services/api'
 
 import Cart from '../../components/Cart'
+import Loader from '../../components/Loader'
+
+type RestauranteParams = {
+  id: string
+}
 
 const Restaurantes = () => {
-  const { id } = useParams()
-  const { data: pratos } = useGetRestaurateByIdQuery(id!)
+  const { id } = useParams() as RestauranteParams
+  const { data: pratos } = useGetRestaurateByIdQuery(id)
 
   if (pratos) {
     return (
@@ -23,7 +28,7 @@ const Restaurantes = () => {
       </>
     )
   }
-  return <h3>Carregando...</h3>
+  return <Loader />
 }
 
 export default Restaurantes
