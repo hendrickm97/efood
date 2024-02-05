@@ -13,7 +13,7 @@ import {
 import { useDispatch, useSelector } from 'react-redux'
 import { RootReducer } from '../../store'
 import { clear, close, remove } from '../../store/reducers/cart'
-import { formataPreco } from '../ListaPratos'
+import { formataPreco } from '../../utils'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import InputMask from 'react-input-mask'
@@ -98,13 +98,6 @@ const Cart = () => {
     }),
     onSubmit: (values) => {
       purchase({
-        products: [
-          {
-            id: 1,
-            price: 0
-          }
-        ],
-
         delivery: {
           receiver: values.fullName,
           address: {
@@ -126,7 +119,13 @@ const Cart = () => {
               year: Number(values.expiresYear)
             }
           }
-        }
+        },
+        products: [
+          {
+            id: 1,
+            price: 0
+          }
+        ]
       })
     }
   })
@@ -168,13 +167,7 @@ const Cart = () => {
   }
 
   const goToCheckout = () => {
-    if (
-      !form.errors.cardName &&
-      !form.errors.cardNumber &&
-      !form.errors.cardCode &&
-      !form.errors.expiresMonth &&
-      !form.errors.expiresYear
-    ) {
+    if (isSuccess) {
       setPaymentData(false)
       setCheckout(true)
       dispatch(clear())
@@ -302,14 +295,19 @@ const Cart = () => {
               className={checkInputHasError('complement') ? 'error' : ''}
             />
           </div>
-          <ButtonGroup>
+        </form>
+        <ButtonGroup>
+          {form.dirty ? (
             <CartButtom type="submit" onClick={goToPayment}>
               Continuar com pagamento
             </CartButtom>
-            <CartButtom onClick={backToCart}>Voltar para carrinho</CartButtom>
-          </ButtonGroup>
-        </form>
+          ) : (
+            <CartButtom type="submit">Continuar com pagamento</CartButtom>
+          )}
+          <CartButtom onClick={backToCart}>Voltar para carrinho</CartButtom>
+        </ButtonGroup>
       </Sidebar>
+
       <Sidebar className={paymentData ? '' : 'is-closed'}>
         <h3>Pagamento - Valor a pagar {formataPreco(getTotalPrice())}</h3>
         <form onSubmit={form.handleSubmit}>

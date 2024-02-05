@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react'
-import { CardapioItem, Restaurante } from '../../pages/Home'
 import CardPrato, { getDescription } from '../CardPrato'
 import { List, Modal, ModalContent } from './styles'
 import close from '../../assets/images/close.png'
@@ -7,16 +6,10 @@ import { useParams } from 'react-router-dom'
 import { add, open } from '../../store/reducers/cart'
 import { useDispatch } from 'react-redux'
 import Loader from '../Loader'
+import { formataPreco } from '../../utils'
 
 interface ModalState {
   isVisible: boolean
-}
-
-export const formataPreco = (preco = 0) => {
-  return new Intl.NumberFormat('pt-BR', {
-    style: 'currency',
-    currency: 'BRL'
-  }).format(preco)
 }
 
 const ListaPratos = () => {

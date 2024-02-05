@@ -72,6 +72,8 @@ export const Sidebar = styled.aside`
     height: 32px;
     background-color: ${cores.rosaClaro};
     padding: 0 8px;
+    font-weight: 700;
+    font-size: 14px;
 
     &.error {
       border: 1px solid red;
@@ -125,6 +127,7 @@ export const CartItem = styled.li`
     position: absolute;
     bottom: 8px;
     right: 8px;
+    cursor: pointer;
   }
 `
 export const CartButtom = styled.button`

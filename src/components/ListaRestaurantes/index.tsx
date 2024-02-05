@@ -1,4 +1,3 @@
-import { Restaurante } from '../../pages/Home'
 import CardRestaurante from '../CardRestaurante'
 import { List } from './styles'
 
